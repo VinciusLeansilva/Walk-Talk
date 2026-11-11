@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "allowImportingTsExtensions": true,
+    "allowArbitraryExtensions": true,
+    "types": ["node", "vite/client", "@cloudflare/workers-types"],
+    "plugins": [{ "name": "next" }],
+    "paths": { "@/*": ["./*"] }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "server/**/*.ts", "app/**/*.ts", "app/**/*.tsx", "worker/**/*.ts", "db/**/*.ts", "vite.config.ts", "drizzle.config.ts", "cloudflare-env.d.ts"],
+  "exclude": ["node_modules", "dist", ".vinext", ".wrangler", ".sites-runtime", "test-results", "tests"]
+}

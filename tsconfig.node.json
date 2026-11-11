@@ -1,0 +1,1 @@
+{"extends":"./tsconfig.json","include":["server/**/*.ts","worker/**/*.ts","db/**/*.ts","vite.config.ts","drizzle.config.ts","cloudflare-env.d.ts"]}

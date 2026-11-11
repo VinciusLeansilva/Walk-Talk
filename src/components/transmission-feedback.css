@@ -1,0 +1,213 @@
+.transmission-feedback {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.85fr);
+  align-items: center;
+  column-gap: clamp(24px, 4vw, 64px);
+  padding: 23px 28px 22px;
+  margin-top: 10px;
+  border: 1px solid #b1d0e512;
+  border-radius: 7px;
+  background: linear-gradient(115deg, #0e1a2499, #0b141c33);
+}
+
+.transmission-track {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.transmission-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  color: #a5b5c2;
+  font-size: 11px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.transmission-node-icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #38505e;
+  border-radius: 50%;
+  background: #101c27;
+  color: #9eafbd;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.transmission-connector {
+  position: absolute;
+  top: 18px;
+  left: calc(50% + 25px);
+  width: calc(100% - 50px);
+  height: 1px;
+  overflow: hidden;
+  background: #354b5b;
+}
+
+.transmission-connector i {
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: var(--cyan);
+  transform: translateX(-120%);
+  opacity: 0;
+}
+
+.transmission-result {
+  padding-left: 26px;
+  border-left: 1px solid #b1d0e51c;
+}
+
+.transmission-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #d9e3ea;
+}
+
+.transmission-status-light {
+  width: 5px;
+  height: 5px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #9eafbd;
+}
+
+.transmission-result p {
+  margin-top: 3px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #aebdca;
+}
+
+.transmission-result small {
+  display: block;
+  margin-top: 7px;
+  font-size: 10px;
+  line-height: 1.5;
+  color: #93a5b5;
+}
+
+.transmission-talking .transmission-node-0 .transmission-node-icon {
+  color: #ffb778;
+  border-color: #b47949;
+  background: #392719;
+}
+
+.transmission-talking .transmission-status-light {
+  background: #ffad6c;
+}
+
+.transmission-transit .transmission-node-0 .transmission-node-icon,
+.transmission-transit .transmission-node-1 .transmission-node-icon,
+.transmission-received .transmission-node-icon {
+  color: var(--cyan);
+  border-color: #5a909a;
+  background: #17303a;
+}
+
+.transmission-transit .transmission-status-light,
+.transmission-received .transmission-status-light {
+  background: var(--cyan);
+}
+
+.transmission-transit .transmission-connector i {
+  animation: transmission-packet 1.2s ease-in-out both;
+}
+
+.transmission-transit .transmission-node-1 .transmission-connector i {
+  animation-delay: 1.2s;
+}
+
+.transmission-received .transmission-connector {
+  background: #5a909a;
+}
+
+@keyframes transmission-packet {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(350%);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 850px) {
+  .transmission-feedback {
+    column-gap: 18px;
+    padding: 20px;
+  }
+
+  .transmission-result {
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .transmission-feedback {
+    grid-template-columns: 1fr;
+    row-gap: 17px;
+    padding: 20px 16px 17px;
+  }
+
+  .transmission-node {
+    font-size: 10px;
+    gap: 8px;
+  }
+
+  .transmission-result {
+    padding: 14px 0 0;
+    border-left: 0;
+    border-top: 1px solid #b1d0e51c;
+    text-align: center;
+  }
+
+  .transmission-status {
+    justify-content: center;
+    font-size: 13px;
+  }
+
+  .transmission-result small {
+    margin-top: 5px;
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .transmission-node-icon {
+    transition: none;
+  }
+
+  .transmission-transit .transmission-connector i {
+    animation: none;
+    width: 100%;
+    transform: none;
+    opacity: 0.65;
+  }
+}
